@@ -1,0 +1,27 @@
+# Environments and secrets
+.venv/
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+*.pem
+*.key
+
+# Local data and generated outputs (only explicit development fixtures are public)
+data/*
+!data/dev/
+data/dev/*
+!data/dev/eight_rows.csv
+uploads/
+private/
+outputs/
+
+# Python and local tools
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.idea/
+.vscode/
+Thumbs.db
