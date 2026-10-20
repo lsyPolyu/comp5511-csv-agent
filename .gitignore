@@ -28,3 +28,6 @@ Thumbs.db
 
 # Archived Codex material (kept locally, not tracked)
 _archive_codex/
+
+# Submission packages (built from git)
+submission/
