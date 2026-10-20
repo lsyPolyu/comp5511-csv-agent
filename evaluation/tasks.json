@@ -1,0 +1,987 @@
+[
+ {
+  "task_id": "T01",
+  "dataset": "titanic",
+  "split": "formal",
+  "type": "filter",
+  "question": "How many passengers were older than 60?",
+  "spec": {
+   "filters": [
+    {
+     "column": "Age",
+     "op": "gt",
+     "value": 60
+    }
+   ],
+   "group_by": [],
+   "metric": {
+    "operation": "row_count",
+    "column": null
+   }
+  }
+ },
+ {
+  "task_id": "T02",
+  "dataset": "titanic",
+  "split": "formal",
+  "type": "filter",
+  "question": "How many first-class passengers were female?",
+  "spec": {
+   "filters": [
+    {
+     "column": "Pclass",
+     "op": "eq",
+     "value": 1
+    },
+    {
+     "column": "Sex",
+     "op": "eq",
+     "value": "female"
+    }
+   ],
+   "group_by": [],
+   "metric": {
+    "operation": "row_count",
+    "column": null
+   }
+  }
+ },
+ {
+  "task_id": "T03",
+  "dataset": "titanic",
+  "split": "formal",
+  "type": "filter",
+  "question": "What was the average fare paid by passengers who embarked at Cherbourg?",
+  "spec": {
+   "filters": [
+    {
+     "column": "Embarked",
+     "op": "eq",
+     "value": "C"
+    }
+   ],
+   "group_by": [],
+   "metric": {
+    "operation": "mean",
+    "column": "Fare"
+   }
+  }
+ },
+ {
+  "task_id": "T04",
+  "dataset": "titanic",
+  "split": "formal",
+  "type": "filter",
+  "question": "What was the survival rate of children younger than 10 years?",
+  "spec": {
+   "filters": [
+    {
+     "column": "Age",
+     "op": "lt",
+     "value": 10
+    }
+   ],
+   "group_by": [],
+   "metric": {
+    "operation": "mean",
+    "column": "Survived"
+   }
+  }
+ },
+ {
+  "task_id": "T05",
+  "dataset": "titanic",
+  "split": "formal",
+  "type": "grouped",
+  "question": "What was the survival rate for each passenger class?",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "Pclass"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "Survived"
+   }
+  }
+ },
+ {
+  "task_id": "T06",
+  "dataset": "titanic",
+  "split": "formal",
+  "type": "grouped",
+  "question": "What was the average age of passengers in each class?",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "Pclass"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "Age"
+   }
+  }
+ },
+ {
+  "task_id": "T07",
+  "dataset": "titanic",
+  "split": "formal",
+  "type": "grouped",
+  "question": "How many passengers embarked at each port?",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "Embarked"
+   ],
+   "metric": {
+    "operation": "row_count",
+    "column": null
+   }
+  }
+ },
+ {
+  "task_id": "T08",
+  "dataset": "titanic",
+  "split": "formal",
+  "type": "grouped",
+  "question": "What was the average fare for each combination of passenger class and gender?",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "Pclass",
+    "Sex"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "Fare"
+   }
+  }
+ },
+ {
+  "task_id": "T09",
+  "dataset": "titanic",
+  "split": "formal",
+  "type": "grouped",
+  "question": "For each number of siblings or spouses aboard, what was the survival rate?",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "SibSp"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "Survived"
+   }
+  }
+ },
+ {
+  "task_id": "T10",
+  "dataset": "titanic",
+  "split": "formal",
+  "type": "grouped",
+  "question": "How many passengers in each class have a recorded age?",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "Pclass"
+   ],
+   "metric": {
+    "operation": "count",
+    "column": "Age"
+   }
+  }
+ },
+ {
+  "task_id": "T11",
+  "dataset": "titanic",
+  "split": "formal",
+  "type": "compare",
+  "question": "Did women or men have the higher survival rate? Start your answer with the winning group.",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "Sex"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "Survived"
+   }
+  },
+  "answer_check": {
+   "winner_pattern": "\\b(female|females|women|woman)\\b",
+   "loser_pattern": "\\b(male|males|men|man)\\b"
+  }
+ },
+ {
+  "task_id": "T12",
+  "dataset": "titanic",
+  "split": "formal",
+  "type": "compare",
+  "question": "Which passenger class had the highest average age? Start your answer with the winning group.",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "Pclass"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "Age"
+   }
+  },
+  "answer_check": {
+   "winner_pattern": "\\b(1|first|1st)\\b",
+   "loser_pattern": "\\b(2|3|second|third|2nd|3rd)\\b"
+  }
+ },
+ {
+  "task_id": "T13",
+  "dataset": "titanic",
+  "split": "formal",
+  "type": "compare",
+  "question": "Among third-class passengers, did women or men have the higher survival rate? Start your answer with the winning group.",
+  "spec": {
+   "filters": [
+    {
+     "column": "Pclass",
+     "op": "eq",
+     "value": 3
+    }
+   ],
+   "group_by": [
+    "Sex"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "Survived"
+   }
+  },
+  "answer_check": {
+   "winner_pattern": "\\b(female|females|women|woman)\\b",
+   "loser_pattern": "\\b(male|males|men|man)\\b"
+  }
+ },
+ {
+  "task_id": "T14",
+  "dataset": "titanic",
+  "split": "formal",
+  "type": "compare",
+  "question": "Which gender had the higher average age? Start your answer with the winning group.",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "Sex"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "Age"
+   }
+  },
+  "answer_check": {
+   "winner_pattern": "\\b(male|males|men|man)\\b",
+   "loser_pattern": "\\b(female|females|women|woman)\\b"
+  }
+ },
+ {
+  "task_id": "T15",
+  "dataset": "titanic",
+  "split": "formal",
+  "type": "bar",
+  "question": "Plot the survival rate for each passenger class as a bar chart.",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "Pclass"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "Survived"
+   }
+  },
+  "chart": "bar"
+ },
+ {
+  "task_id": "T16",
+  "dataset": "titanic",
+  "split": "formal",
+  "type": "bar",
+  "question": "Draw a bar chart of the number of passengers by gender.",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "Sex"
+   ],
+   "metric": {
+    "operation": "row_count",
+    "column": null
+   }
+  },
+  "chart": "bar"
+ },
+ {
+  "task_id": "T17",
+  "dataset": "titanic",
+  "split": "formal",
+  "type": "bar",
+  "question": "Show the average fare by port of embarkation as a bar chart.",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "Embarked"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "Fare"
+   }
+  },
+  "chart": "bar"
+ },
+ {
+  "task_id": "T18",
+  "dataset": "titanic",
+  "split": "formal",
+  "type": "line",
+  "question": "Plot the survival rate by number of parents or children aboard as a line chart.",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "Parch"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "Survived"
+   }
+  },
+  "chart": "line"
+ },
+ {
+  "task_id": "T19",
+  "dataset": "titanic",
+  "split": "formal",
+  "type": "line",
+  "question": "Draw a line chart of the average fare by number of siblings or spouses aboard.",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "SibSp"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "Fare"
+   }
+  },
+  "chart": "line"
+ },
+ {
+  "task_id": "T20",
+  "dataset": "titanic",
+  "split": "formal",
+  "type": "line",
+  "question": "Plot how many passengers there were for each number of siblings or spouses aboard as a line chart.",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "SibSp"
+   ],
+   "metric": {
+    "operation": "row_count",
+    "column": null
+   }
+  },
+  "chart": "line"
+ },
+ {
+  "task_id": "B01",
+  "dataset": "bike",
+  "split": "formal",
+  "type": "filter",
+  "question": "How many days in 2012 had more than 7000 total rentals?",
+  "spec": {
+   "filters": [
+    {
+     "column": "yr",
+     "op": "eq",
+     "value": 1
+    },
+    {
+     "column": "cnt",
+     "op": "gt",
+     "value": 7000
+    }
+   ],
+   "group_by": [],
+   "metric": {
+    "operation": "row_count",
+    "column": null
+   }
+  }
+ },
+ {
+  "task_id": "B02",
+  "dataset": "bike",
+  "split": "formal",
+  "type": "filter",
+  "question": "What was the average number of casual users on holidays?",
+  "spec": {
+   "filters": [
+    {
+     "column": "holiday",
+     "op": "eq",
+     "value": 1
+    }
+   ],
+   "group_by": [],
+   "metric": {
+    "operation": "mean",
+    "column": "casual"
+   }
+  }
+ },
+ {
+  "task_id": "B03",
+  "dataset": "bike",
+  "split": "formal",
+  "type": "filter",
+  "question": "What was the total number of rentals in 2011?",
+  "spec": {
+   "filters": [
+    {
+     "column": "yr",
+     "op": "eq",
+     "value": 0
+    }
+   ],
+   "group_by": [],
+   "metric": {
+    "operation": "sum",
+    "column": "cnt"
+   }
+  }
+ },
+ {
+  "task_id": "B04",
+  "dataset": "bike",
+  "split": "formal",
+  "type": "filter",
+  "question": "What was the average humidity on days with light rain or snow?",
+  "spec": {
+   "filters": [
+    {
+     "column": "weathersit",
+     "op": "eq",
+     "value": 3
+    }
+   ],
+   "group_by": [],
+   "metric": {
+    "operation": "mean",
+    "column": "hum"
+   }
+  }
+ },
+ {
+  "task_id": "B05",
+  "dataset": "bike",
+  "split": "formal",
+  "type": "grouped",
+  "question": "What were the average daily rentals in each season?",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "season"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "cnt"
+   }
+  }
+ },
+ {
+  "task_id": "B06",
+  "dataset": "bike",
+  "split": "formal",
+  "type": "grouped",
+  "question": "What were the total rentals for each year?",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "yr"
+   ],
+   "metric": {
+    "operation": "sum",
+    "column": "cnt"
+   }
+  }
+ },
+ {
+  "task_id": "B07",
+  "dataset": "bike",
+  "split": "formal",
+  "type": "grouped",
+  "question": "What was the average normalized temperature for each month?",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "mnth"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "temp"
+   }
+  }
+ },
+ {
+  "task_id": "B08",
+  "dataset": "bike",
+  "split": "formal",
+  "type": "grouped",
+  "question": "What were the average daily rentals on working days and on non-working days?",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "workingday"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "cnt"
+   }
+  }
+ },
+ {
+  "task_id": "B09",
+  "dataset": "bike",
+  "split": "formal",
+  "type": "grouped",
+  "question": "What was the average number of registered users for each weather situation?",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "weathersit"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "registered"
+   }
+  }
+ },
+ {
+  "task_id": "B10",
+  "dataset": "bike",
+  "split": "formal",
+  "type": "grouped",
+  "question": "For each day of the week, what were the average daily rentals?",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "weekday"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "cnt"
+   }
+  }
+ },
+ {
+  "task_id": "B11",
+  "dataset": "bike",
+  "split": "formal",
+  "type": "compare",
+  "question": "Which season had the highest average daily rentals? Start your answer with the winning group.",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "season"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "cnt"
+   }
+  },
+  "answer_check": {
+   "winner_pattern": "\\b(fall|autumn|season 3)\\b",
+   "loser_pattern": "\\b(spring|summer|winter|season [124])\\b"
+  }
+ },
+ {
+  "task_id": "B12",
+  "dataset": "bike",
+  "split": "formal",
+  "type": "compare",
+  "question": "Were average daily rentals higher in 2011 or in 2012? Start your answer with the winning group.",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "yr"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "cnt"
+   }
+  },
+  "answer_check": {
+   "winner_pattern": "\\b2012\\b",
+   "loser_pattern": "\\b2011\\b"
+  }
+ },
+ {
+  "task_id": "B13",
+  "dataset": "bike",
+  "split": "formal",
+  "type": "compare",
+  "question": "Which day of the week had the highest average daily rentals? Start your answer with the winning group.",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "weekday"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "cnt"
+   }
+  },
+  "answer_check": {
+   "winner_pattern": "\\b(friday|fridays|weekday 5)\\b",
+   "loser_pattern": "\\b(sundays?|mondays?|tuesdays?|wednesdays?|thursdays?|saturdays?|weekday [0-46])\\b"
+  }
+ },
+ {
+  "task_id": "B14",
+  "dataset": "bike",
+  "split": "formal",
+  "type": "compare",
+  "question": "Which year had the higher average normalized temperature, 2011 or 2012? Start your answer with the winning group.",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "yr"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "temp"
+   }
+  },
+  "answer_check": {
+   "winner_pattern": "\\b2012\\b",
+   "loser_pattern": "\\b2011\\b"
+  }
+ },
+ {
+  "task_id": "B15",
+  "dataset": "bike",
+  "split": "formal",
+  "type": "bar",
+  "question": "Plot the average daily rentals for each season as a bar chart.",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "season"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "cnt"
+   }
+  },
+  "chart": "bar"
+ },
+ {
+  "task_id": "B16",
+  "dataset": "bike",
+  "split": "formal",
+  "type": "bar",
+  "question": "Draw a bar chart of total rentals by weather situation.",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "weathersit"
+   ],
+   "metric": {
+    "operation": "sum",
+    "column": "cnt"
+   }
+  },
+  "chart": "bar"
+ },
+ {
+  "task_id": "B17",
+  "dataset": "bike",
+  "split": "formal",
+  "type": "bar",
+  "question": "Show the average number of casual users by day of the week as a bar chart.",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "weekday"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "casual"
+   }
+  },
+  "chart": "bar"
+ },
+ {
+  "task_id": "B18",
+  "dataset": "bike",
+  "split": "formal",
+  "type": "line",
+  "question": "Plot total rentals per month in 2012 as a line chart.",
+  "spec": {
+   "filters": [
+    {
+     "column": "yr",
+     "op": "eq",
+     "value": 1
+    }
+   ],
+   "group_by": [
+    "mnth"
+   ],
+   "metric": {
+    "operation": "sum",
+    "column": "cnt"
+   }
+  },
+  "chart": "line"
+ },
+ {
+  "task_id": "B19",
+  "dataset": "bike",
+  "split": "formal",
+  "type": "line",
+  "question": "Draw a line chart of the average humidity for each month.",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "mnth"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "hum"
+   }
+  },
+  "chart": "line"
+ },
+ {
+  "task_id": "B20",
+  "dataset": "bike",
+  "split": "formal",
+  "type": "line",
+  "question": "Plot the average number of registered users per month in 2011 as a line chart.",
+  "spec": {
+   "filters": [
+    {
+     "column": "yr",
+     "op": "eq",
+     "value": 0
+    }
+   ],
+   "group_by": [
+    "mnth"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "registered"
+   }
+  },
+  "chart": "line"
+ },
+ {
+  "task_id": "D01",
+  "dataset": "titanic",
+  "split": "dev",
+  "type": "filter",
+  "question": "How many passengers survived?",
+  "spec": {
+   "filters": [
+    {
+     "column": "Survived",
+     "op": "eq",
+     "value": 1
+    }
+   ],
+   "group_by": [],
+   "metric": {
+    "operation": "row_count",
+    "column": null
+   }
+  }
+ },
+ {
+  "task_id": "D02",
+  "dataset": "titanic",
+  "split": "dev",
+  "type": "filter",
+  "question": "What was the average age of second-class passengers?",
+  "spec": {
+   "filters": [
+    {
+     "column": "Pclass",
+     "op": "eq",
+     "value": 2
+    }
+   ],
+   "group_by": [],
+   "metric": {
+    "operation": "mean",
+    "column": "Age"
+   }
+  }
+ },
+ {
+  "task_id": "D03",
+  "dataset": "titanic",
+  "split": "dev",
+  "type": "grouped",
+  "question": "What was the survival rate by port of embarkation?",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "Embarked"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "Survived"
+   }
+  }
+ },
+ {
+  "task_id": "D04",
+  "dataset": "titanic",
+  "split": "dev",
+  "type": "bar",
+  "question": "Plot the average age by passenger class as a bar chart.",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "Pclass"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "Age"
+   }
+  },
+  "chart": "bar"
+ },
+ {
+  "task_id": "D05",
+  "dataset": "titanic",
+  "split": "dev",
+  "type": "compare",
+  "question": "Which gender paid the higher average fare? Start your answer with the winning group.",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "Sex"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "Fare"
+   }
+  },
+  "answer_check": {
+   "winner_pattern": "\\b(female|females|women|woman)\\b",
+   "loser_pattern": "\\b(male|males|men|man)\\b"
+  }
+ },
+ {
+  "task_id": "D06",
+  "dataset": "bike",
+  "split": "dev",
+  "type": "grouped",
+  "question": "What was the average wind speed in each season?",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "season"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "windspeed"
+   }
+  }
+ },
+ {
+  "task_id": "D07",
+  "dataset": "bike",
+  "split": "dev",
+  "type": "filter",
+  "question": "How many working days were there in 2011?",
+  "spec": {
+   "filters": [
+    {
+     "column": "yr",
+     "op": "eq",
+     "value": 0
+    },
+    {
+     "column": "workingday",
+     "op": "eq",
+     "value": 1
+    }
+   ],
+   "group_by": [],
+   "metric": {
+    "operation": "row_count",
+    "column": null
+   }
+  }
+ },
+ {
+  "task_id": "D08",
+  "dataset": "bike",
+  "split": "dev",
+  "type": "line",
+  "question": "Plot total rentals per month in 2011 as a line chart.",
+  "spec": {
+   "filters": [
+    {
+     "column": "yr",
+     "op": "eq",
+     "value": 0
+    }
+   ],
+   "group_by": [
+    "mnth"
+   ],
+   "metric": {
+    "operation": "sum",
+    "column": "cnt"
+   }
+  },
+  "chart": "line"
+ },
+ {
+  "task_id": "D09",
+  "dataset": "bike",
+  "split": "dev",
+  "type": "grouped",
+  "question": "What was the total number of casual users in each year?",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "yr"
+   ],
+   "metric": {
+    "operation": "sum",
+    "column": "casual"
+   }
+  }
+ },
+ {
+  "task_id": "D10",
+  "dataset": "bike",
+  "split": "dev",
+  "type": "bar",
+  "question": "Draw a bar chart of the average daily rentals for holidays and non-holidays.",
+  "spec": {
+   "filters": [],
+   "group_by": [
+    "holiday"
+   ],
+   "metric": {
+    "operation": "mean",
+    "column": "cnt"
+   }
+  },
+  "chart": "bar"
+ }
+]

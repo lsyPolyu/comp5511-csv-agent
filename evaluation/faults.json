@@ -1,0 +1,12 @@
+[
+ {"fault_id": "F01", "task_id": "T11", "tool": "aggregate_data", "op": "set_group_by", "index": 0, "value": "gender", "kind": "unknown column"},
+ {"fault_id": "F02", "task_id": "T05", "tool": "aggregate_data", "op": "set_metric_column", "index": 0, "value": "survived", "kind": "wrong case"},
+ {"fault_id": "F03", "task_id": "T06", "tool": "aggregate_data", "op": "set_metric_column", "index": 0, "value": "Name", "kind": "mean of a text column"},
+ {"fault_id": "F04", "task_id": "T02", "tool": "aggregate_data", "op": "set_filter_value", "column": "Sex", "value": "Female", "kind": "category value not present"},
+ {"fault_id": "F05", "task_id": "T13", "tool": "aggregate_data", "op": "set_filter_column", "column": "Pclass", "value": "Class", "kind": "unknown filter column"},
+ {"fault_id": "F06", "task_id": "B07", "tool": "aggregate_data", "op": "set_group_by", "index": 0, "value": "month", "kind": "unknown column"},
+ {"fault_id": "F07", "task_id": "B05", "tool": "aggregate_data", "op": "set_metric_column", "index": 0, "value": "rentals", "kind": "unknown column"},
+ {"fault_id": "F08", "task_id": "B03", "tool": "aggregate_data", "op": "set_metric_column", "index": 0, "value": "dteday", "kind": "sum of a text column"},
+ {"fault_id": "F09", "task_id": "B04", "tool": "aggregate_data", "op": "set_filter_value", "column": "weathersit", "value": "rain", "kind": "filter type mismatch"},
+ {"fault_id": "F10", "task_id": "B15", "tool": "plot_result", "op": "set_field", "field": "y", "value": "total", "kind": "unknown result field"}
+]
