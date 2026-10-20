@@ -9,7 +9,10 @@ import time
 from dataclasses import dataclass, field
 
 DEFAULT_BASE_URL = "https://api.deepseek.com"
-DEFAULT_MODEL = "deepseek-chat"  # confirm against the official docs before frozen runs
+# Checked 2026-10-20 at api-docs.deepseek.com: "deepseek-flash" (DeepSeek-V4.1-Flash) supports tool
+# calls; thinking is on by default, so requests explicitly disable it (temperature has no effect
+# in thinking mode, and thinking mode requires passing reasoning_content back).
+DEFAULT_MODEL = "deepseek-flash"
 
 
 @dataclass
@@ -73,7 +76,7 @@ class DeepSeekClient:
         import httpx  # imported here so offline tests do not need the package
 
         body = {"model": self.model, "messages": messages, "temperature": self.temperature,
-                "max_tokens": self.max_tokens, "stream": False}
+                "max_tokens": self.max_tokens, "stream": False, "thinking": {"type": "disabled"}}
         if tools:
             body["tools"] = tools
         headers = {"Authorization": f"Bearer {self.api_key}", "Content-Type": "application/json"}
