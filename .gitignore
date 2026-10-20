@@ -25,3 +25,6 @@ htmlcov/
 .idea/
 .vscode/
 Thumbs.db
+
+# Archived Codex material (kept locally, not tracked)
+_archive_codex/

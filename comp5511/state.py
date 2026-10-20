@@ -136,6 +136,15 @@ class AnalysisSession:
         result = self.resolve_result(self.current_result_id)
         return result if result["success"] else None
 
+    def result_summaries(self) -> list[dict]:
+        """List the current run's results (id and field names) for feedback."""
+        return [
+            {"result_id": result_id,
+             "fields": [field["name"] for field in result["data"]["fields"]]}
+            for result_id, result in self._results.items()
+            if self._matches_context(result["data"])
+        ]
+
     @staticmethod
     def _invalid_chart_reference() -> dict:
         return error_result(
